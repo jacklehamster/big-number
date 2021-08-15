@@ -96,6 +96,26 @@ class BigNumber {
       return newNumber;
     }
   
+    retrieve(str) {
+      const split = str.split("");
+      split.reverse();
+      const s = split.join("");
+      const chunks = str.match(/.{1,6}/g);
+      chunks.reverse();
+      for (let i = 0; i < chunks.length; i++) {
+        let arr = chunks[i] = chunks[i].split("");
+        arr.reverse();
+        arr = arr.join("");
+      }
+      const number = new BigNumber();
+      let node = number.tail;
+      arr.forEach(value => {
+        node.value = value;
+        node = number.tail = new BigNumberChunk(number.head, null);
+        number.chunks++;
+      });
+    }
+  
     toString() {
       let s = "";
       for(let node = this.head; node; node = node.right) {
