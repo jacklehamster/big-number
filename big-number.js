@@ -96,7 +96,7 @@ class BigNumber {
       return newNumber;
     }
   
-    retrieve(str) {
+    static retrieve(str) {
       const split = str.split("");
       split.reverse();
       const s = split.join("");
@@ -114,6 +114,7 @@ class BigNumber {
         node = number.tail = new BigNumberChunk(number.head, null);
         number.chunks++;
       });
+      return number;
     }
   
     toString() {
