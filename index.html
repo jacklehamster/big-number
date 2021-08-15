@@ -9,15 +9,14 @@
     <script>
       const number = new BigNumber();
       function iterate() {
-        number.increment();
+        requestAnimationFrame(loop);
+        for (let i = 0; i < 1000; i++) {
+           number.increment();
+        }
         document.getElementById("increment-div").textContent = number.toString();
       }
       
       function loop() {
-        requestAnimationFrame(loop);
-        for (let i = 0; i < 1000; i++) {
-           iterate();
-        }
       }
       
       document.addEventListener("DOMContentLoaded", () => {
