@@ -3,15 +3,15 @@
     <script src="big-number.js"></script>
     <script>
       const number = new BigNumber();
-      function increment() {
-        number.increment();
+      function iterate() {
+        number.double();
         document.getElementById("increment-div").textContent = number.toString();
       }
       
       
       function loop() {
         requestAnimationFrame(loop);
-        increment();
+        iterate();
       }
       
       document.addEventListener("DOMContentLoaded", () => {
