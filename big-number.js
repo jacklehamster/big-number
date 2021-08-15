@@ -36,6 +36,15 @@ class BigNumber {
       this.fix(this.tail);
     }
   
+    div(number) {
+      for(let node = this.head; node; node = node.right) {
+        if (node.value % 2 === 1 && node.right) {
+          node.right.value += 500000;
+        }
+        node.value >>= 1;
+      }
+    }
+  
     copy() {
       const newNumber = new BigNumber();
       let newNode = newNumber.head;
