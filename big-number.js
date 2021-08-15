@@ -100,7 +100,7 @@ class BigNumber {
       const split = str.split("");
       split.reverse();
       const s = split.join("");
-      const chunks = str.match(/.{1,6}/g);
+      const chunks = s.match(/.{1,6}/g);
       chunks.reverse();
       for (let i = 0; i < chunks.length; i++) {
         const arr = chunks[i].split("");
