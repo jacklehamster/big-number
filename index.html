@@ -9,7 +9,11 @@
     <script>
       const number = new BigNumber();
       function iterate() {
-        number.increment();
+        if (number.tail > 1) {
+          number.mul(2);
+        } else {
+          number.increment();
+        }
         document.getElementById("increment-div").textContent = number.toString();
       }
       
