@@ -9,7 +9,7 @@
     <script>
       const number = new BigNumber();
       function iterate() {
-        if (number.tail > 1) {
+        if (number.tail.value > 1) {
           number.mul(2);
         } else {
           number.increment();
