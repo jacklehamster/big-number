@@ -7,12 +7,27 @@
     </style>
     <script src="big-number.js"></script>
     <script>
-      const number = new BigNumber();
+      const number = localStorage.getItem("num") ? BigNumber.retrieve(localStorage.getItem("num")) : new BigNumber();
+      if (number.chunks === 1 && number.value <= 1) {
+        number.value = 2;
+      }
+      
       function iterate() {
         requestAnimationFrame(loop);
-        for (let i = 0; i < 1000; i++) {
-           number.increment();
-        }
+        
+        const n = number.copy();
+        do {
+          number.apply3n1();
+          const comp = number.compare(n);
+          if (comp === 0) {
+            console.log("cycle: " + number.toString();
+            return;
+          } else if (comp < 0) {
+              break;
+          }
+        } while(true);
+        number.increment();
+        
         document.getElementById("increment-div").textContent = number.toString();
       }
       
