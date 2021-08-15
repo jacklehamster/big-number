@@ -39,7 +39,7 @@ class BigNumber {
       return this;
     }
   
-    div(number) {
+    half() {
       for(let node = this.head; node; node = node.right) {
         if (node.value % 2 === 1 && node.right) {
           node.right.value += 500000;
