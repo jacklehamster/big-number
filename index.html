@@ -20,9 +20,12 @@
           number.apply3n1();
           const comp = number.compare(n);
           if (comp === 0) {
+              if (number.chunks === 1 && (number.head.value === 1 || number.head.value === 2 || number.head.value === 4) {
+                  break;
+              }
               console.log("cycle:", number.toString());
               return;
-          } else if (comp > 0) {
+          } else if (comp < 0) {
               break;
           }
         } while(true);
