@@ -115,7 +115,7 @@ class BigNumber {
           node = number.tail = new BigNumberChunk(node, null);
           number.chunks++;
         }
-      });
+      }
       return number;
     }
   
