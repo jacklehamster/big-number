@@ -64,7 +64,7 @@ class BigNumber {
       } else if (this.chunks > num.chunks) {
         return -1;
       }
-      for (let node1 = this.head, node2 = number.head; node1 || node2; node1 = node1.right, node2 = node2.right) {
+      for (let node1 = this.head, node2 = num.head; node1 || node2; node1 = node1.right, node2 = node2.right) {
         if (node1.value < node2.value) {
           return 1;
         } else if (node1.value > node2.value) {
