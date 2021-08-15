@@ -1,8 +1,14 @@
 class BigNumberChunk {
-  constructor() {
+  constructor(left, right) {
     this.value = 0;
-    this.right = null;
-    this.left = null;
+    this.left = left || null;
+    this.right = right || null;
+    if (this.left) {
+      this.left.right = this;
+    }
+    if (this.right) {
+      this.right.left = this;
+    }
   }
 }
 
@@ -13,7 +19,24 @@ class BigNumber {
   
     increment() {
       this.tail.value++;
-      this.fixTail();
+      this.fix(this.tail);
+    }
+  
+    double() {
+      this.head.value *= 2;
+      this.fix(this.head);
+    }
+  
+    copy() {
+      const newNumber = new BigNumber();
+      let newNode = newNumber.head;
+      for (let node = this.head; node; node = node.right) {
+        newNode.value = node.value;
+        if (node.right) {
+          newNode = new BigNumberChunk(newNode, null);
+        }
+      }
+      return newNumber;
     }
   
     toString() {
@@ -24,13 +47,10 @@ class BigNumber {
       return s;
     }
   
-    fixTail() {
-      let node = this.tail;
+    fix(node) {
       while(node.value > 1000000) {
         if (!node.left) {
-          node.left = new BigNumberChunk();
-          node.left.right = node;
-          this.head = node;
+          this.head = new BigNumberChunk(null, node);
         }
         node.left.value += Math.floor(node.value / 1000000);
         node.value = node.value % 1000000;
