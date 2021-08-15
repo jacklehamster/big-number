@@ -22,9 +22,18 @@ class BigNumber {
       this.fix(this.tail);
     }
   
-    double() {
-      this.head.value *= 2;
-      this.fix(this.head);
+    mul(value) {
+      for (let node = this.head; node; node = node.right) {
+        node.value *= value;
+      }
+      this.fix(this.tail);
+    }
+  
+    add(number) {
+      for (let node1 = this.tail, node2 = number.tail; node1 || node2; node1 = node1.left, node2 = node2.left) {
+        node1.value += node2.value;
+      }
+      this.fix(this.tail);
     }
   
     copy() {
@@ -48,12 +57,14 @@ class BigNumber {
     }
   
     fix(node) {
-      while(node.value > 1000000) {
-        if (!node.left) {
-          this.head = new BigNumberChunk(null, node);
+      while(node) {
+        if (node.value > 1000000) {
+          if (!node.left) {
+            this.head = new BigNumberChunk(null, node);
+          }
+          node.left.value += Math.floor(node.value / 1000000);
+          node.value = node.value % 1000000;
         }
-        node.left.value += Math.floor(node.value / 1000000);
-        node.value = node.value % 1000000;
         node = node.left;
       }
       while(this.head.value === 0 && this.head.next) {
