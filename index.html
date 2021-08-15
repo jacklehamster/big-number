@@ -9,17 +9,15 @@
     <script>
       const number = new BigNumber();
       function iterate() {
-        if (number.tail.value > 1) {
-          number.mul(2);
-        } else {
-          number.increment();
-        }
+        number.increment();
         document.getElementById("increment-div").textContent = number.toString();
       }
       
       function loop() {
         requestAnimationFrame(loop);
-        iterate();
+        for (let i = 0; i < 1000000) {
+           iterate();
+        }
       }
       
       document.addEventListener("DOMContentLoaded", () => {
