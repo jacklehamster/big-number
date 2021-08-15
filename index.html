@@ -9,7 +9,7 @@
     <script>
       const number = localStorage.getItem("num") ? BigNumber.retrieve(localStorage.getItem("num")) : new BigNumber();
       if (number.chunks === 1 && number.head.value <= 1) {
-        number.head.value = 5;
+        number.head.value = 2;
       }
       
       function iterate() {
