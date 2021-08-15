@@ -49,6 +49,14 @@ class BigNumber {
       return this;
     }
   
+    odd() {
+      return this.tail.value % 2 === 1;
+    }
+  
+    even() {
+      return this.tail.value % 2 === 0;
+    }
+  
     copy() {
       const newNumber = new BigNumber();
       let newNode = newNumber.head;
