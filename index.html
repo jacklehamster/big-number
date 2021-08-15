@@ -13,7 +13,10 @@
         requestAnimationFrame(loop);
         increment();
       }
-      loop(0);
+      
+      document.addEventListener("DOMContentLoaded", () => {
+        loop(0);
+      });
     </script>
   </head>
 
