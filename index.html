@@ -1,9 +1,24 @@
 <html>
   <head>
     <script src="big-number.js"></script>
+    <script>
+      const number = new BigNumber();
+      function increment() {
+        number.increment();
+        document.getElement("increment-div").textContext = number.toString();
+      }
+      
+      
+      function loop() {
+        requestAnimationFrame(loop);
+        increment();
+      }
+      loop(0);
+    </script>
   </head>
 
-
   <body>
+    <div id="increment-div"></div>
+    
   </body>
 </html>
