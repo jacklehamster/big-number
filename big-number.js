@@ -17,8 +17,8 @@ class BigNumber {
       this.tail = this.head = new BigNumberChunk();
     }
   
-    increment() {
-      this.tail.value++;
+    increment(num) {
+      this.tail.value+= (num || 1);
       this.fix(this.tail);
     }
   
