@@ -1,5 +1,10 @@
 <html>
   <head>
+    <style>
+      .wrapped {
+        overflow-wrap: break-word;
+      }
+    </style>
     <script src="big-number.js"></script>
     <script>
       const number = new BigNumber();
@@ -8,7 +13,6 @@
         number.mul(2);
         document.getElementById("increment-div").textContent = number.toString();
       }
-      
       
       function loop() {
         requestAnimationFrame(loop);
@@ -22,7 +26,7 @@
   </head>
 
   <body>
-    <div id="increment-div"></div>
+    <div class="wrapped" id="increment-div"></div>
     
   </body>
 </html>
