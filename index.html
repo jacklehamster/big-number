@@ -13,7 +13,6 @@
       }
       
       function iterate() {
-        requestAnimationFrame(loop);
         
         const n = number.copy();
         do {
@@ -24,7 +23,7 @@
                   break;
               }
               console.log("cycle:", number.toString());
-              return;
+              return true;
           } else if (comp < 0) {
               break;
           }
@@ -35,7 +34,9 @@
       }
       
       function loop() {
-        iterate();
+        if (!iterate()) {
+          requestAnimationFrame(loop);
+        }
       }
       
       document.addEventListener("DOMContentLoaded", () => {
