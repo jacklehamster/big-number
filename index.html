@@ -4,6 +4,7 @@
     <script>
       const number = new BigNumber();
       function iterate() {
+        number.increment();
         number.mul(2);
         document.getElementById("increment-div").textContent = number.toString();
       }
