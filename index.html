@@ -30,7 +30,7 @@
           }
         } while(true);
         number.increment();
-        
+        localStorage.setItem("num", number.toString());
         document.getElementById("increment-div").textContent = number.toString();
       }
       
