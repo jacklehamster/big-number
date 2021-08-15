@@ -57,6 +57,16 @@ class BigNumber {
       return this.tail.value % 2 === 0;
     }
   
+    apply3n1() {
+      if (this.odd()) {
+        this.mul(3);
+        this.increment();
+      } else {
+        this.half();
+      }
+      return this;
+    }
+  
     copy() {
       const newNumber = new BigNumber();
       let newNode = newNumber.head;
