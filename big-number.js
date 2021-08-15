@@ -105,14 +105,16 @@ class BigNumber {
       for (let i = 0; i < chunks.length; i++) {
         let arr = chunks[i] = chunks[i].split("");
         arr.reverse();
-        arr = arr.join("");
+        chunks[i] = arr.join("");
       }
       const number = new BigNumber();
       let node = number.tail;
-      arr.forEach(value => {
-        node.value = value;
-        node = number.tail = new BigNumberChunk(number.head, null);
-        number.chunks++;
+      for (let i = 0; i < chunks.length; i++) {
+        node.value = parseInt(chunks[i]);
+        if (i < chunks.length-1) {
+          node = number.tail = new BigNumberChunk(node, null);
+          number.chunks++;
+        }
       });
       return number;
     }
