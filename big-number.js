@@ -20,6 +20,7 @@ class BigNumber {
     increment(num) {
       this.tail.value+= (num || 1);
       this.fix(this.tail);
+      return this;
     }
   
     mul(value) {
@@ -27,6 +28,7 @@ class BigNumber {
         node.value *= value;
       }
       this.fix(this.tail);
+      return this;
     }
   
     add(number) {
@@ -34,6 +36,7 @@ class BigNumber {
         node1.value += node2.value;
       }
       this.fix(this.tail);
+      return this;
     }
   
     div(number) {
@@ -43,6 +46,7 @@ class BigNumber {
         }
         node.value >>= 1;
       }
+      return this;
     }
   
     copy() {
