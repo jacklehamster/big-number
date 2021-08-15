@@ -15,6 +15,7 @@ class BigNumberChunk {
 class BigNumber {
     constructor() {
       this.tail = this.head = new BigNumberChunk();
+      this.chunks = 1;
     }
   
     increment(num) {
@@ -57,6 +58,22 @@ class BigNumber {
       return this.tail.value % 2 === 0;
     }
   
+    compare(num) {
+      if (this.chunks < num.chunks) {
+        return 1;
+      } else if (this.chunks > num.chunks) {
+        return -1;
+      }
+      for (let node1 = this.head, node2 = number.head; node1 || node2; node1 = node1.right, node2 = node2.right) {
+        if (node1.value < node2.value) {
+          return 1;
+        } else if (node1.value > node2.value) {
+          return -1;
+        }
+      }
+      return 0;
+    }
+  
     apply3n1() {
       if (this.odd()) {
         this.mul(3);
@@ -92,6 +109,7 @@ class BigNumber {
         if (node.value > 1000000) {
           if (!node.left) {
             this.head = new BigNumberChunk(null, node);
+            this.chunks++;
           }
           node.left.value += Math.floor(node.value / 1000000);
           node.value = node.value % 1000000;
@@ -100,6 +118,7 @@ class BigNumber {
       }
       while(this.head.value === 0 && this.head.next) {
         this.head = this.head.next;
+        this.chunks--;
       }
     }
 }
