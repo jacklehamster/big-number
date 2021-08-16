@@ -37,7 +37,11 @@
       }
       
       function nextNumber(number) {
-        number.increment();
+        if (number.even()) {
+          number.increment();
+        } else {
+          number.increment(2);
+        }
       }
       
       function loop() {
