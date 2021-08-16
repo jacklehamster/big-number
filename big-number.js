@@ -140,8 +140,9 @@ class BigNumber {
         }
         node = node.left;
       }
-      while(this.head.value === 0 && this.head.next) {
-        this.head = this.head.next;
+      while(this.head.value === 0 && this.head.right) {
+        this.head = this.head.right;
+        this.head.left = null;
         this.chunks--;
       }
     }
