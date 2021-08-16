@@ -63,7 +63,7 @@
         const numString = number.toString();
         localStorage.setItem("num", numString);
         document.getElementById("increment-div").textContent = numString;
-        document.getElementById("increment-div-calc").textContent = n === null ? "" : n.toString();
+        document.getElementById("increment-div-calc").textContent = n === null ? "0" : n.toString();
         document.getElementById("date").textContent = (new Date()).toString();
         document.getElementById("max-num").textContent = numString;
         requestAnimationFrame(loop);
