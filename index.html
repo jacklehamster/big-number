@@ -45,16 +45,14 @@
         document.getElementById("increment-div").textContent = numString;
       }
       
-      let lastTime = 0;
-      function loop(t) {
-        if (t - lastTime < 500) {
-          requestAnimationFrame(loop);
-          return;          
+      function loop() {
+        const start = performance.now();
+        while(performance.now() - start < 50) {
+          if (iterate()) {
+            return;
+          }
         }
-        lastTime = t;
-        if (!iterate()) {
-          requestAnimationFrame(loop);
-        }
+        requestAnimationFrame(loop);
       }
       
       document.addEventListener("DOMContentLoaded", () => {
