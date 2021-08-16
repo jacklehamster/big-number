@@ -13,10 +13,13 @@
         num2exp68.mul(2);
       }
       
-      const number = localStorage.getItem("num") ? BigNumber.retrieve(localStorage.getItem("num")) : number.compare(num2exp68) > 0 ? num2exp68 : new BigNumber();
+      let number = localStorage.getItem("num") ? BigNumber.retrieve(localStorage.getItem("num")) : new BigNumber();
       let n;
       if (number.chunks === 1 && number.head.value <= 1) {
         number.head.value = 2;
+      }
+      if (number.compare(num2exp68) > 0) {
+        number = num2exp68;
       }
       
       function iterate() {
