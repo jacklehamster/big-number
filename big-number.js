@@ -122,8 +122,18 @@ class BigNumber {
   
     toString() {
       let s = "";
-      for(let node = this.head; node; node = node.right) {
-        s += node===this.head ? node.value : (node.value + 1000000).toString().substr(1);
+      let negate = false;
+      if (this.head < 0) {
+        negate = true;
+      }
+      if (negate) {
+        for(let node = this.head; node; node = node.right) {
+          s += node===this.head ? node.value + 1 : (1000000 - node.value).toString().substr(1);
+        }
+      } else {
+        for(let node = this.head; node; node = node.right) {
+          s += node===this.head ? node.value : (node.value + 1000000).toString().substr(1);
+        }
       }
       return s;
     }
