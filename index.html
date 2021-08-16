@@ -19,7 +19,7 @@
         number.head.value = 2;
       }
       if (number.compare(num2exp68) > 0) {
-        number = num2exp68;
+        number = num2exp68.copy();
       }
       
       function iterate() {
@@ -55,7 +55,7 @@
       
       function loop() {
         const start = performance.now();
-        while(performance.now() - start < 30) {
+        while(performance.now() - start < 25) {
           if (iterate()) {
             return;
           }
@@ -66,6 +66,11 @@
         document.getElementById("increment-div-calc").textContent = n === null ? "0" : n.toString();
         document.getElementById("date").textContent = (new Date()).toString();
         document.getElementById("max-num").textContent = numString;
+        const numTemp = number.copy();
+        numTemp.mul(-1);
+        numTemp.add(num2exp68);
+        numTemp.mul(-1);
+        document.getElementById("diff").textContent = numTemp.toString();
         requestAnimationFrame(loop);
       }
       
@@ -91,7 +96,7 @@
     <br>
     <div  class="wrapped">
       This page was made just to break that record. As of <span id="date"></span>
-      the conjecture has been checked up to <span id="max-num"></span> which is higher than 2<sup>68</sup>.
+      the conjecture has been checked up to <span id="max-num"></span> which is 2<sup>68</sup> + <span id="diff"></span>.
     </div>
     
     
