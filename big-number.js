@@ -124,7 +124,7 @@ class BigNumber {
     toString() {
       let s = "";
       let negate = false;
-      if (this.head < 0) {
+      if (this.head.value < 0) {
         negate = true;
       }
       if (negate) {
