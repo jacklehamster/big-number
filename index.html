@@ -50,7 +50,7 @@
         const numString = number.toString();
         localStorage.setItem("num", numString);
         document.getElementById("increment-div").textContent = numString;
-        document.getElementById("increment-div-calc").textContent = n.toString();
+        document.getElementById("increment-div-calc").textContent = n === null ? "" : n.toString();
         requestAnimationFrame(loop);
       }
       
