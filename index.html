@@ -8,27 +8,37 @@
     <script src="big-number.js"></script>
     <script>
       const number = localStorage.getItem("num") ? BigNumber.retrieve(localStorage.getItem("num")) : new BigNumber();
+      let n;
       if (number.chunks === 1 && number.head.value <= 1) {
         number.head.value = 2;
       }
       
       function iterate() {
-        
-        const n = number.copy();
-        do {
-          n.apply3n1();
-          const comp = number.compare(n);
-          if (comp === 0) {
-              if (n.chunks === 1 && (n.head.value === 1 || n.head.value === 2 || n.head.value === 4)) {
-                  break;
-              }
-              console.log("Number:", number.toString(), ". n:", n.toString());
-              console.log("cycle:", number.toString());
-              return true;
-          } else if (comp < 0) {
-              break;
-          }
-        } while(true);
+        if (n == null) {
+          n = number.copy();
+        }
+        n.apply3n1();
+        const comp = number.compare(n);
+        if (comp === 0) {
+            if (n.chunks === 1 && (n.head.value === 1 || n.head.value === 2 || n.head.value === 4)) {
+                nextNumber();
+                return false;
+            }
+            console.log("Number:", number.toString(), ". n:", n.toString());
+            console.log("cycle:", number.toString());
+            return true;
+        } else if (comp < 0) {
+            nextNumber();
+            document.getElementById("increment-div.calc").textContent = "";
+            n = null;
+            return false;
+        } else {
+            document.getElementById("increment-div.calc").textContent = n.toString();
+            return false;
+        }
+      }
+      
+      function nextNumber() {
         number.increment();
         localStorage.setItem("num", number.toString());
         document.getElementById("increment-div").textContent = number.toString();
@@ -48,6 +58,7 @@
 
   <body>
     <div class="wrapped" id="increment-div"></div>
+    <div class="wrapped" id="increment-div-calc"></div>
     
   </body>
 </html>
