@@ -122,9 +122,6 @@ class BigNumber {
   
     toString() {
       let s = "";
-      if (this.head.value < 0) {
-        s += "-";
-      }
       for(let node = this.head; node; node = node.right) {
         s += node===this.head ? node.value : (Math.abs(node.value) + 1000000).toString().substr(1);
       }
