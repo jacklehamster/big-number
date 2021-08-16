@@ -64,6 +64,8 @@
         localStorage.setItem("num", numString);
         document.getElementById("increment-div").textContent = numString;
         document.getElementById("increment-div-calc").textContent = n === null ? "" : n.toString();
+        document.getElementById("date").textContext = (new Date()).toString();
+        document.getElementById("max-num").textContext = numString;
         requestAnimationFrame(loop);
       }
       
@@ -78,6 +80,19 @@
     <div class="wrapped" id="increment-div"></div>
     <br>
     <div class="wrapped" id="increment-div-calc"></div>
+    <br>
+    <br>
+    
+    According to Google:
+    <a href="https://www.google.com/search?q=collatz+conjecture+highest+number&sxsrf=ALeKk03G0rqrPkOPmAyjIVC6sGrbOGNnvA%3A1629103622784&source=hp&ei=BiYaYY-NLZHs9AOp0ayYBw&iflsig=AINFCbYAAAAAYRo0FgRXfdPf62svCMnFWQKofOtN_Nnq&oq=coll&gs_lcp=Cgdnd3Mtd2l6EAMYADIECCMQJzIFCAAQkQIyBQgAEJECMg4ILhCABBCxAxDHARDRAzIFCC4QgAQyBQgAEIAEMggIABCABBCxAzIICAAQgAQQsQMyCAguEIAEELEDMgsIABCABBCxAxCDAToHCCMQ6gIQJzoOCC4QgAQQsQMQxwEQowI6EQguEIAEELEDEIMBEMcBENEDOggILhCxAxCDAToLCC4QgAQQxwEQ0QNQ8xJY7hhg1yFoAXAAeACAAYgDiAGrBpIBBzAuMy4wLjGYAQCgAQGwAQo&sclient=gws-wiz">
+      As of 2020, the Collatz conjecture has been checked by computer for all starting values up to 2<sup>68</sup> ≈ 2.95×10<sup>20</sup>. All initial values tested so far eventually end in the repeating cycle (4;2;1) of period 3.
+    </a>
+    <br>
+    <br>
+    This page was made just to break that record. As of <div id="date"></div>
+    the conjecture has been checked up to <span id="max-num"></span> which is higher than 2<sup>68</sup>.
+    
+    
     
   </body>
 </html>
