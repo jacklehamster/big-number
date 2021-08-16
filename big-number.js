@@ -91,7 +91,7 @@ class BigNumber {
       for (let node = this.head; node; node = node.right) {
         newNode.value = node.value;
         if (node.right) {
-          newNode = new BigNumberChunk(newNode, null);
+          newNode = newNumber.tail = new BigNumberChunk(newNode, null);
         }
       }
       return newNumber;
