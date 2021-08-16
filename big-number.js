@@ -47,6 +47,7 @@ class BigNumber {
         }
         node.value >>= 1;
       }
+      this.fix();
       return this;
     }
   
