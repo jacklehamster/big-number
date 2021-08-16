@@ -123,7 +123,7 @@ class BigNumber {
     toString() {
       let s = "";
       for(let node = this.head; node; node = node.right) {
-        s += node===this.head ? node.value : (Math.abs(node.value) + 1000000).toString().substr(1);
+        s += node===this.head ? node.value : (node.value + 1000000).toString().substr(1);
       }
       return s;
     }
@@ -140,10 +140,8 @@ class BigNumber {
         }
         if (node.value < 0 && node.left) {
           const mils = Math.ceil(-node.value / 1000000);
-          if (node.left.value >= mils) {
-            node.left.value -= mils;
-            node.value += mils * 1000000;
-          }
+          node.left.value -= mils;
+          node.value += mils * 1000000;
         }
         node = node.left;
       }
