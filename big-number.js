@@ -92,6 +92,7 @@ class BigNumber {
         newNode.value = node.value;
         if (node.right) {
           newNode = newNumber.tail = new BigNumberChunk(newNode, null);
+          newNumber.chunks++;
         }
       }
       return newNumber;
