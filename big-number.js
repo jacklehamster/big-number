@@ -138,6 +138,13 @@ class BigNumber {
           node.left.value += Math.floor(node.value / 1000000);
           node.value = node.value % 1000000;
         }
+        if (node.value < 0 && node.left) {
+          const mils = Math.floor(-node.value / 1000000);
+          if (node.left.value >= mils) {
+            node.left.value -= mils;
+            node.value += mils * 1000000;
+          }
+        }
         node = node.left;
       }
       while(this.head.value === 0 && this.head.right) {
