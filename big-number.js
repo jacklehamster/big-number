@@ -41,7 +41,7 @@ class BigNumber {
     }
   
     half() {
-      for(let node = this.head; node; node = node.right) {
+      for(let node = this.tail; node; node = node.left) {
         if (node.value % 2 === 1 && node.right) {
           node.right.value += 500000;
         }
@@ -130,7 +130,7 @@ class BigNumber {
   
     fix(node) {
       while(node) {
-        if (node.value > 1000000) {
+        if (node.value >= 1000000) {
           if (!node.left) {
             this.head = new BigNumberChunk(null, node);
             this.chunks++;
