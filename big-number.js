@@ -139,7 +139,7 @@ class BigNumber {
           node.value = node.value % 1000000;
         }
         if (node.value < 0 && node.left) {
-          const mils = Math.floor(-node.value / 1000000);
+          const mils = Math.ceil(-node.value / 1000000);
           if (node.left.value >= mils) {
             node.left.value -= mils;
             node.value += mils * 1000000;
