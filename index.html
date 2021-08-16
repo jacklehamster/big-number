@@ -14,21 +14,21 @@
       }
       
       function iterate() {
-        if (n == null) {
+        if (n === null) {
           n = number.copy();
         }
         n.apply3n1();
         const comp = number.compare(n);
         if (comp === 0) {
             if (n.chunks === 1 && (n.head.value === 1 || n.head.value === 2 || n.head.value === 4)) {
-                nextNumber();
+                nextNumber(number);
                 return false;
             }
             console.log("Number:", number.toString(), ". n:", n.toString());
             console.log("cycle:", number.toString());
             return true;
         } else if (comp < 0) {
-            nextNumber();
+            nextNumber(number);
             document.getElementById("increment-div-calc").textContent = "";
             n = null;
             return false;
@@ -38,10 +38,11 @@
         }
       }
       
-      function nextNumber() {
+      function nextNumber(number) {
         number.increment();
-        localStorage.setItem("num", number.toString());
-        document.getElementById("increment-div").textContent = number.toString();
+        const numString = number.toString();
+        localStorage.setItem("num", numString);
+        document.getElementById("increment-div").textContent = numString;
       }
       
       function loop() {
