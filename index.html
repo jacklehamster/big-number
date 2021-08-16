@@ -45,7 +45,13 @@
         document.getElementById("increment-div").textContent = numString;
       }
       
-      function loop() {
+      let lastTime = 0;
+      function loop(t) {
+        if (t - lastTime < 500) {
+          requestAnimationFrame(loop);
+          return;          
+        }
+        lastTime = t;
         if (!iterate()) {
           requestAnimationFrame(loop);
         }
