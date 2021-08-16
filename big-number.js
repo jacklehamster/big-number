@@ -129,7 +129,7 @@ class BigNumber {
       }
       if (negate) {
         for(let node = this.head; node; node = node.right) {
-          s += node===this.head ? node.value + 1 : (1000000 - node.value).toString().substr(1);
+          s += node===this.head ? node.value + 1 : (2000000 - node.value).toString().substr(1);
         }
       } else {
         for(let node = this.head; node; node = node.right) {
