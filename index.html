@@ -29,20 +29,15 @@
             return true;
         } else if (comp < 0) {
             nextNumber(number);
-            document.getElementById("increment-div-calc").textContent = "";
             n = null;
             return false;
         } else {
-            document.getElementById("increment-div-calc").textContent = n.toString();
             return false;
         }
       }
       
       function nextNumber(number) {
         number.increment();
-        const numString = number.toString();
-        localStorage.setItem("num", numString);
-        document.getElementById("increment-div").textContent = numString;
       }
       
       function loop() {
@@ -52,6 +47,10 @@
             return;
           }
         }
+        const numString = number.toString();
+        localStorage.setItem("num", numString);
+        document.getElementById("increment-div").textContent = numString;
+        document.getElementById("increment-div-calc").textContent = n.toString();
         requestAnimationFrame(loop);
       }
       
