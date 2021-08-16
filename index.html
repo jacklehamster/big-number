@@ -64,8 +64,8 @@
         localStorage.setItem("num", numString);
         document.getElementById("increment-div").textContent = numString;
         document.getElementById("increment-div-calc").textContent = n === null ? "" : n.toString();
-        document.getElementById("date").textContext = (new Date()).toString();
-        document.getElementById("max-num").textContext = numString;
+        document.getElementById("date").textContent = (new Date()).toString();
+        document.getElementById("max-num").textContent = numString;
         requestAnimationFrame(loop);
       }
       
@@ -89,9 +89,10 @@
     </a>
     <br>
     <br>
-    This page was made just to break that record. As of <div id="date"></div>
-    the conjecture has been checked up to <span id="max-num"></span> which is higher than 2<sup>68</sup>.
-    
+    <div  class="wrapped">
+      This page was made just to break that record. As of <div id="date"></div>
+      the conjecture has been checked up to <span id="max-num"></span> which is higher than 2<sup>68</sup>.
+    </div>
     
     
   </body>
